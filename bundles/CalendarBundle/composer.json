@@ -1,0 +1,40 @@
+{
+    "name": "bravik/calendar-bundle",
+    "version": "0.0.1",
+    "type": "symfony-bundle",
+    "description": "Symfony bundles tutorial example project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Roman N",
+            "email": "naumenko_subscr@mail.ru"
+        }
+    ],
+    "require": {
+        "php": "^7.3"
+    },
+    "require-dev": {
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "bravik\\CalendarBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "bravik\\CalendarBundle\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test" : "./vendor/bin/simple-phpunit"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "5.0.*"
+        }
+    }
+}
