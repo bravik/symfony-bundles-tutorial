@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46404cf6aa7f3d42da446065a1355ec4",
+    "content-hash": "d217bcb98199161d97632908601b3ef3",
     "packages": [
+        {
+            "name": "bravik/calendar-bundle",
+            "version": "0.1.0",
+            "dist": {
+                "type": "path",
+                "url": "./bundles/CalendarBundle",
+                "reference": "03576bfe12de5ca3e829a429cd95b67e9b4fed43"
+            },
+            "require": {
+                "php": "^7.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "symfony": {
+                    "allow-contrib": false,
+                    "require": "5.0.*"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "bravik\\CalendarBundle\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "bravik\\CalendarBundle\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "./vendor/bin/simple-phpunit"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Roman N",
+                    "email": "naumenko_subscr@mail.ru"
+                }
+            ],
+            "description": "Symfony bundles tutorial example project"
+        },
         {
             "name": "doctrine/annotations",
             "version": "1.10.1",
