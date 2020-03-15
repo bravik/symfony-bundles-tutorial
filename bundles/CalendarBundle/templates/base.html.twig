@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block calendar_title %}Редактор событий{% endblock %}</title>
+        {% block calendar_stylesheets %}
+            {{ encore_entry_link_tags('calendar-editor-styles') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="content">
+            {% block calendar_body %}{% endblock %}
+        </div>
+
+        {% block calendar_javascripts %}
+            {{ encore_entry_script_tags('calendar-editor-app') }}
+        {% endblock %}
+    </body>
+</html>

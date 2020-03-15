@@ -26,6 +26,10 @@ Encore
     .addEntry('host-app', './assets/js/host-app.js')
     .addStyleEntry('host-styles', './assets/scss/host-styles.scss')
 
+    // Paths to Calendar entry files in vendors directory
+    .addEntry('calendar-editor-app', './vendor/bravik/calendar-bundle/assets/js/calendar-editor-app.js')
+    .addStyleEntry('calendar-editor-styles', './vendor/bravik/calendar-bundle/assets/scss/calendar-editor-styles.scss')
+
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {%- block calendar_title %}{% endblock -%}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('calendar-editor-styles') }}
+    {% block calendar_styles %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+    {%- block calendar_body %}{% endblock -%}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('calendar-editor-app') }}
+    {% block calendar_scripts %}{% endblock %}
+{% endblock %}
