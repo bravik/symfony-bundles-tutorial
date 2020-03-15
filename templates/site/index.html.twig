@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Календарь{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Календарь событий</h1>
+
+    {# Events #}
+    {% include 'event/widget/calendar.html.twig' %}
+</div>
+{% endblock %}

@@ -15,7 +15,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php,Service/EventExporter}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -23,5 +23,33 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Tests\Fixtures\:
+        resource: '../tests/Fixtures'
+        tags: ['doctrine.fixture.orm']
+
+    # Registers as services EventExporter component classes
+
+    # @todo Delete this in step 1
+    App\Service\EventExporter\Exporters\GoogleCalendarExporter: ~
+    App\Service\EventExporter\Exporters\ICalendarExporter: ~
+    App\Service\EventExporter\ExporterManager:
+        arguments:
+            $exporters:
+                - '@App\Service\EventExporter\Exporters\GoogleCalendarExporter'
+                - '@App\Service\EventExporter\Exporters\ICalendarExporter'
+
+    # @todo Uncomment this in step 1
+    # @todo Delete this in step 4
+#    App\Service\EventExporter\ExporterManager:
+
+    # @todo Uncomment this and move to bundle config in step 4
+#    bravik\CalendarBundle\Service\EventExporter\:
+#        resource: '../src/Service/EventExporter/*'
+#
+#    # Register EventProvider as a service and explicitly pass 2 exporters to it's constructor
+#    bravik\CalendarBundle\Service\EventExporter\ExporterManager:
+#        arguments:
+#            $exporters:
+#                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\GoogleCalendarExporter'
+#                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\ICalendarExporter'
+

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактор{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row align-items-center mb-3">
+            <div class="col">
+                <h1>Список мероприятий</h1>
+            </div>
+            <div class="col text-right">
+                <a href="{{ path('editor.new') }}" class="btn btn-light">Добавить</a>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Начало</th>
+                <th>Конец</th>
+                <th>Место</th>
+                <th>Статус</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.id }}</td>
+                    <td><a href="{{ path('editor.edit', {'id': event.id}) }}">{{ event.title }}</a></td>
+                    <td>{{ event.startsAt ? event.startsAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ event.endsAt ? event.endsAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ event.venueName }}</td>
+                    <td>{{ event.archived ? 'В архиве' : 'Опубликовано' }}</td>
+                    <td class="d-flex">
+                        <div class="btn-group" role="group">
+                            <a href="{{ path('editor.edit', {'id': event.id}) }}" class="btn btn-sm btn-light">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <a href="{{ path('event.show', {'id': event.id}) }}" class="btn btn-sm btn-light" target="_blank">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            {% if not isSoftDeleteEnabled %}
+                                <a href="{{ path('editor.delete', {'id': event.id}) }}" class="btn btn-sm btn-danger"
+                                    title="Удалить"><i class="fas fa-trash-alt"></i></a>
+                            {% elseif not (isSoftDeleteEnabled and event.archived) %}
+                                <a href="{{ path('editor.delete', {'id': event.id}) }}" class="btn btn-sm btn-warning"
+                                   title="В архив"><i class="fas fa-trash-alt"></i></a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">События не найдены</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

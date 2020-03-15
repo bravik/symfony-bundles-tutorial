@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('host-styles') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% include 'menu.html.twig' %}
+
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
+
+        {% include 'footer.html.twig' %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('host-app') }}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col">
+                <h1>{{ event.title }}</h1>
+            </div>
+            <div class="col text-right">
+                <div class="event__info-block">
+                    {% if exporters is not empty %}
+                    <div class="dropdown event__btn-calendar">
+                        <button aria-expanded="false"
+                                aria-haspopup="true"
+                                class="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown"
+                                id="dropdownCalendarButton"
+                                type="button"
+                        >
+                            <i class="fa fa-calendar-alt"></i> В календарь
+                        </button>
+                        <div aria-labelledby="dropdownCalendarButton" class="dropdown-menu">
+                            {% for exporter in exporters %}
+                                <a class="dropdown-item" target="_blank" href="
+                                    {{- exporter.inline
+                                        ? exporter.export(event)
+                                        :  path('event.export', {'id': event.id, 'type': exporter.type })
+                                    -}}
+                                ">
+                                    {{ exporter.name }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="event__info-block event-date">
+                    {% if event.endsAt is not empty %}
+                        {{ event.startsAt | ru_datetime }} — {{ event.endsAt | ru_datetime }}
+                    {% else %}
+                        {{ event.startsAt | ru_datetime }}
+                    {% endif %}
+                </div>
+
+                {% if event.venueName is not empty %}
+                    <div class="event__info-block event-place">{{ event.venueName }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <hr>
+
+        <div>
+            {{ event.description | raw }}
+        </div>
+
+        <br>
+
+        <h4>Как добраться</h4>
+        <p>{{ event.venueName }}</p>
+        <p>{{ event.venueAddress }}</p>
+    </div>
+
+
+
+{% endblock %}

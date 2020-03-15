@@ -1,0 +1,54 @@
+{# A few twig macroses for pretty date foramatting in template #}
+{% macro event_duration(event) %}
+    {% if date('now'|date('Y-m-d')) == date(event.startsAt|date('Y-m-d')) %}
+        Сегодня
+    {% elseif event.endsAt is not null %}
+        {{ event.startsAt.format('d.m.Y') }} - {{ event.endsAt.format('d.m.Y') }}
+    {% else %}
+        {{ event.startsAt | ru_date }}
+    {% endif %}
+{% endmacro %}
+
+{% macro is_today(event) %}
+    {% if date('now'|date('Y-m-d')) == date(event.startsAt|date('Y-m-d')) %}
+        today
+    {% endif %}
+{% endmacro %}
+
+{% macro is_past(startDate, endDate) %}
+    {% if endDate is not empty %}
+        {% if endDate < date() %}
+            event_past
+        {% endif %}
+    {% else %}
+        {% if startDate < date() %}
+            event_past
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{# Import these macroses as a variable from the same file#}
+{% import _self as eventType %}
+
+{# Template itself #}
+<div class="events-calendar">
+    {% for event in events %}
+        <a class="events-calendar__slot event {{ eventType.is_past(event.startsAt, event.endsAt) }} {{ eventType.is_today(event) }}"
+           data-event-id="{{ event.id }}"
+           href="{{ path('event.show', { id: event.id }) }}"
+        >
+            <div class="event-date">{{ eventType.event_duration(event) }}</div>
+            <div class="event-title">{{ event.title }}</div>
+            <div class="event-place">{{ event.venueName }}</div>
+            <div class="event-status"></div>
+        </a>
+    {% else %}
+        К сожалению, событий, удовлетворяющих условиям поиска, не обнаружено.
+    {% endfor %}
+
+    {% if hasMore is defined and hasMore %}
+        <a class="events-calendar__slot btn-show-more-events" href="#">
+            ЕЩЕ МЕРОПРИЯТИЯ
+        </a>
+    {% endif %}
+</div>

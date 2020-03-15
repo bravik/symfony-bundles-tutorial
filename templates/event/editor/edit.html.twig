@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактор{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row align-items-center mb-3">
+            <div class="col">
+                {% if event.id is not empty %}
+                    <h1>Редактирование мероприятие</h1>
+                {% else %}
+                    <h1>Добавление мероприятия</h1>
+                {% endif %}
+            </div>
+            <div class="col text-right">
+                <a href="{{ path('editor.index') }}" class="btn btn-light"><i class="fa fa-chevron-left"></i> Назад</a>
+            </div>
+        </div>
+
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.title) }}
+
+        <div class="row mb-2 mt-2">
+            <div class="col">
+                {{ form_row(form.startsAt) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.endsAt) }}
+            </div>
+        </div>
+
+        {{ form_row(form.description) }}
+
+        <div class="row mb-2 mt-2">
+            <div class="col">
+                {{ form_row(form.venueName) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.venueAddress) }}
+            </div>
+        </div>
+
+        {{ form_rest(form) }}
+        <p class="text-right">
+            <button class="btn btn-info"><i class="fa fa-save"></i> Сохранить</button>
+        </p>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,96 @@
+.events-calendar {
+  margin-top: 30px;
+  padding: 1px;
+  overflow: hidden;
+
+  &__slot {
+    width: 25%;
+    border: 1px solid #ddd;
+    padding: 18px 24px;
+    float: left;
+    margin: -1px 0 0 -1px;
+    height: 180px;
+    background: #fff;
+
+    &:hover {
+      background-color: #f7f7f7;
+    }
+
+    @media (max-width: map-get($grid-breakpoints, lg)) {
+      width: 33.3%
+    }
+
+    @media (max-width: map-get($grid-breakpoints, md)) {
+      width: 50%
+    }
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      width: 100%
+    }
+  }
+}
+
+.event {
+  color: #000;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &-date {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ed5338;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    max-height: 80px;
+    margin-bottom: 6px;
+    color: #000;
+    overflow: hidden;
+  }
+
+  &-place {
+    color: #292929;
+  }
+
+  &_past {
+    & .event-date {
+      color: #c1c1c1;
+      color: rgba(0, 0, 0, .2);
+    }
+
+    & .event-title {
+      color: #6d6d6d !important;
+      color: rgba(0, 0, 0, .5) !important;
+    }
+  }
+
+  &__info-block {
+    padding: 4px 0;
+    font-weight: 500;
+
+    @include media-breakpoint-up(md) {
+      display: inline-block;
+      margin-right: 20px;
+      padding: 0;
+    }
+  }
+
+  &__btn-calendar {
+    display: inline-block;
+  }
+}
+
+.btn-show-more-events {
+  color: #6d6d6d !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

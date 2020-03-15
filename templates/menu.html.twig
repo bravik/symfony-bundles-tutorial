@@ -1,0 +1,23 @@
+{# Checks active menu item or section by route name #}
+{% macro is_active_route(route) %}
+    {%- if route == app.request.get('_route') %} active{% endif %}
+{% endmacro %}
+
+{# Checks active menu item or section by path #}
+{% macro is_active_path(path) %}{%- if path in app.request.requestUri %} active{% endif %}{% endmacro %}
+
+<nav class="navbar navbar-expand-xl fixed-top navbar-light bg-light navbar-main">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('index') }}">
+            <div class="navbar-brand__title d-none d-sm-block">Календарь</div>
+        </a>
+        <ul class="navbar-nav">
+            <li class="nav-item {{ _self.is_active_route('index') }} {{ _self.is_active_path('/event/') }}">
+                <a class="nav-link" href="{{ path('index') }}">Календарь</a>
+            </li>
+            <li class="nav-item {{ _self.is_active_path('/editor/') }}">
+                <a class="nav-link" href="{{ path('editor.index') }}">Редактор</a>
+            </li>
+        </ul>
+    </div>
+</nav>
