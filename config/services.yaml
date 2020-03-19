@@ -15,7 +15,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php,Service/EventExporter}'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -27,16 +27,7 @@ services:
         resource: '../tests/Fixtures'
         tags: ['doctrine.fixture.orm']
 
-    # Registers as services EventExporter component classes
-
-    # @todo Uncomment this and move to bundle config in step 4
-#    bravik\CalendarBundle\Service\EventExporter\:
-#        resource: '../src/Service/EventExporter/*'
-#
-#    # Register EventProvider as a service and explicitly pass 2 exporters to it's constructor
-#    bravik\CalendarBundle\Service\EventExporter\ExporterManager:
-#        arguments:
-#            $exporters:
-#                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\GoogleCalendarExporter'
-#                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\ICalendarExporter'
+    # Register custom EventExporters
+#    App\Service\EventExporter\JsonExporter:
+#        tags: ['bravik.calendar.exporter']
 

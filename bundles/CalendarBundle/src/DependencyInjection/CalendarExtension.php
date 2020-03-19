@@ -1,6 +1,7 @@
 <?php
 namespace bravik\CalendarBundle\DependencyInjection;
 
+use bravik\CalendarBundle\Service\EventExporter\ExporterInterface;
 use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -18,6 +19,9 @@ class CalendarExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $container->registerForAutoconfiguration(ExporterInterface::class)
+            ->addTag('bravik.calendar.exporter');
+
         $loader = new YamlFileLoader(
             $container,
             new FileLocator(__DIR__.'/../../config')

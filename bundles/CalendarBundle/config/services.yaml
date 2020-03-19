@@ -20,9 +20,14 @@ services:
     bravik\CalendarBundle\Service\EventExporter\:
         resource: '../src/Service/EventExporter/*'
 
+#    _instanceof:
+#        # Apply tag to all ExporterInterface implementations
+#        bravik\CalendarBundle\Service\EventExporter\ExporterInterface:
+#            tags: ['bravik.calendar.exporter']
+
     # Регистрируем ExporterProvider в качестве DI-сервиса и явно инжектим 2 экспортера в конструктор
-    bravik\CalendarBundle\Service\EventExporter\ExporterManager:
-        arguments:
-            $exporters:
-                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\GoogleCalendarExporter'
-                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\ICalendarExporter'
+#    bravik\CalendarBundle\Service\EventExporter\ExporterManager:
+#        arguments:
+#            $exporters:
+#                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\GoogleCalendarExporter'
+#                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\ICalendarExporter'
