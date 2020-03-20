@@ -1,0 +1,4 @@
+# Add this file to app routes.yaml to use routes  custom loader.
+calendar_routes:
+    type: annotation
+    resource: '../src/Controller/'

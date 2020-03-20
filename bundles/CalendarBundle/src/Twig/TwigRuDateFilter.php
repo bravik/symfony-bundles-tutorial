@@ -1,5 +1,5 @@
 <?php
-namespace App\Twig;
+namespace bravik\CalendarBundle\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;

@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\EventRepository;
+use bravik\CalendarBundle\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SiteController extends AbstractController

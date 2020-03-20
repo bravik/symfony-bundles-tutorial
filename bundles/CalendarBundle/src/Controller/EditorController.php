@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace bravik\CalendarBundle\Controller;
 
-use App\Entity\Event;
-use App\Form\EventType;
-use App\Repository\EventRepository;
+use bravik\CalendarBundle\Entity\Event;
+use bravik\CalendarBundle\Form\EventType;
+use bravik\CalendarBundle\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +35,7 @@ class EditorController extends AbstractController
     {
         $events = $this->eventRepository->findAll();
 
-        return $this->render('event/editor/index.html.twig', [
+        return $this->render('@Calendar/editor/index.html.twig', [
             'events' => $events,
             'isSoftDeleteEnabled' => $this->isSoftDeleteEnabled,
         ]);
@@ -57,7 +57,7 @@ class EditorController extends AbstractController
             return $this->redirectToRoute('editor.index');
         }
 
-        return $this->render('event/editor/edit.html.twig', [
+        return $this->render('@Calendar/editor/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
         ]);
@@ -79,7 +79,7 @@ class EditorController extends AbstractController
             return $this->redirectToRoute('editor.index');
         }
 
-        return $this->render('event/editor/edit.html.twig', [
+        return $this->render('@Calendar/editor/edit.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
         ]);

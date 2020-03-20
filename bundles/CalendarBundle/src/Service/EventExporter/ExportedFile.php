@@ -5,7 +5,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\EventExporter;
+namespace bravik\CalendarBundle\Service\EventExporter;
 
 /**
  * Abstracts the file, which should be a result of Event export

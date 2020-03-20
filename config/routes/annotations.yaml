@@ -5,3 +5,8 @@ controllers:
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
+
+calendar_bundle:
+    resource: '@CalendarBundle/config/routes.yaml'
+#    prefix:   /admin
+#    name_prefix: editor.

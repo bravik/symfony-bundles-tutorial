@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace bravik\CalendarBundle\Repository;
 
-use App\Entity\Event;
+use bravik\CalendarBundle\Entity\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

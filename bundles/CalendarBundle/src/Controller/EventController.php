@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace bravik\CalendarBundle\Controller;
 
-use App\Entity\Event;
-use App\Repository\EventRepository;
-use App\Service\EventExporter\AbstractFileExporter;
-use App\Service\EventExporter\ExporterManager;
+use bravik\CalendarBundle\Entity\Event;
+use bravik\CalendarBundle\Service\EventExporter\AbstractFileExporter;
+use bravik\CalendarBundle\Service\EventExporter\ExporterManager;
+use bravik\CalendarBundle\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -32,7 +32,7 @@ class EventController extends AbstractController
     {
         $event = $this->getEvent($id);
 
-        return $this->render('event/show.html.twig', [
+        return $this->render('@Calendar/show.html.twig', [
             'event' => $event,
             'exporters' => $exporterManager->getAvailableExporters()
         ]);

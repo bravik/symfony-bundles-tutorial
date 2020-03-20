@@ -5,9 +5,9 @@
 
 declare(strict_types=1);
 
-namespace App\Service\EventExporter;
+namespace bravik\CalendarBundle\Service\EventExporter;
 
-use App\Entity\Event;
+use bravik\CalendarBundle\Entity\Event;
 
 /**
  * Base class for all file exporters

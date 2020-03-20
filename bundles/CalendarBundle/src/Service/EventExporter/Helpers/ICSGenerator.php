@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\EventExporter\Helpers;
+namespace bravik\CalendarBundle\Service\EventExporter\Helpers;
 
 use DateTime;
 

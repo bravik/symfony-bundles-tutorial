@@ -5,10 +5,10 @@
 
 declare(strict_types=1);
 
-namespace App\Service\EventExporter\Exporters;
+namespace bravik\CalendarBundle\Service\EventExporter\Exporters;
 
-use App\Entity\Event;
-use App\Service\EventExporter\AbstractInlineExporter;
+use bravik\CalendarBundle\Entity\Event;
+use bravik\CalendarBundle\Service\EventExporter\AbstractInlineExporter;
 
 /**
  * Generates a special link which GoogleCalendar app will recognize

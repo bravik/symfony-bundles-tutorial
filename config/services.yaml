@@ -29,19 +29,6 @@ services:
 
     # Registers as services EventExporter component classes
 
-    # @todo Delete this in step 1
-    App\Service\EventExporter\Exporters\GoogleCalendarExporter: ~
-    App\Service\EventExporter\Exporters\ICalendarExporter: ~
-    App\Service\EventExporter\ExporterManager:
-        arguments:
-            $exporters:
-                - '@App\Service\EventExporter\Exporters\GoogleCalendarExporter'
-                - '@App\Service\EventExporter\Exporters\ICalendarExporter'
-
-    # @todo Uncomment this in step 1
-    # @todo Delete this in step 4
-#    App\Service\EventExporter\ExporterManager:
-
     # @todo Uncomment this and move to bundle config in step 4
 #    bravik\CalendarBundle\Service\EventExporter\:
 #        resource: '../src/Service/EventExporter/*'

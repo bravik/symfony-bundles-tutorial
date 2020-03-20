@@ -5,12 +5,12 @@
 
 declare(strict_types=1);
 
-namespace App\Service\EventExporter\Exporters;
+namespace bravik\CalendarBundle\Service\EventExporter\Exporters;
 
-use App\Entity\Event;
-use App\Service\EventExporter\AbstractFileExporter;
-use App\Service\EventExporter\ExportedFile;
-use App\Service\EventExporter\Helpers\ICSGenerator;
+use bravik\CalendarBundle\Entity\Event;
+use bravik\CalendarBundle\Service\EventExporter\AbstractFileExporter;
+use bravik\CalendarBundle\Service\EventExporter\ExportedFile;
+use bravik\CalendarBundle\Service\EventExporter\Helpers\ICSGenerator;
 
 
 /**

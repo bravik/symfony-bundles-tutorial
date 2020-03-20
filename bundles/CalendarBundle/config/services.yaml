@@ -1,0 +1,28 @@
+parameters:
+
+services:
+    # Конфигурация по умолчанию (только для этого файла)
+    _defaults:
+        # Включает механизм автоматической подстановки зависимостей контейнера в ваши сервисы
+        autowire: true
+        # Включает механизм автоконфигурации
+        autoconfigure: true
+
+    # Явно регистриурум контроллеры бандла и репозиторий как DI-сервисы
+    bravik\CalendarBundle\Repository\EventRepository: ~
+    bravik\CalendarBundle\Controller\EventController: ~
+    bravik\CalendarBundle\Controller\EditorController: ~
+
+    # Фильтр Twig для форматирования даты
+    bravik\CalendarBundle\Twig\TwigRuDateFilter: ~
+
+    # Регистрируем все классы компонента EventExporter как DI-сервисы
+    bravik\CalendarBundle\Service\EventExporter\:
+        resource: '../src/Service/EventExporter/*'
+
+    # Регистрируем ExporterProvider в качестве DI-сервиса и явно инжектим 2 экспортера в конструктор
+    bravik\CalendarBundle\Service\EventExporter\ExporterManager:
+        arguments:
+            $exporters:
+                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\GoogleCalendarExporter'
+                - '@bravik\CalendarBundle\Service\EventExporter\Exporters\ICalendarExporter'

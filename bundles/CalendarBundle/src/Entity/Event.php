@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace bravik\CalendarBundle\Entity;
 
 use DateTime;
 use DateTimeInterface;
