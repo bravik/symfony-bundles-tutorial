@@ -1,6 +1,7 @@
 <?php
 namespace bravik\CalendarBundle\DependencyInjection;
 
+use bravik\CalendarBundle\Controller\EditorController;
 use bravik\CalendarBundle\Service\EventExporter\ExporterInterface;
 use Exception;
 use Symfony\Component\Config\FileLocator;
@@ -27,5 +28,16 @@ class CalendarExtension extends Extension
             new FileLocator(__DIR__.'/../../config')
         );
         $loader->load('services.yaml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+//        $container->setParameter('bravik.calendar.enable_soft_delete', $config['enable_soft_delete']);
+
+
+        $definition = $container->getDefinition(EditorController::class);
+        $definition->setArguments([
+          '$enableSoftDelete' => $config['enable_soft_delete'],
+        ]);
     }
 }

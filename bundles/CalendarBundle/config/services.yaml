@@ -1,4 +1,5 @@
 parameters:
+    bravik.calendar.enable_export: true
 
 services:
     # Конфигурация по умолчанию (только для этого файла)

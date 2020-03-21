@@ -1,0 +1,2 @@
+calendar:
+  enable_soft_delete: true
