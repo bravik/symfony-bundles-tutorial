@@ -5,10 +5,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Service\EventExporter\Exporters;
+namespace bravik\CalendarBundle\Tests\Service\EventExporter\Exporters;
 
-use App\Entity\Event;
-use App\Service\EventExporter\Exporters\GoogleCalendarExporter;
+use bravik\CalendarBundle\Entity\Event;
+use bravik\CalendarBundle\Service\EventExporter\Exporters\GoogleCalendarExporter;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 

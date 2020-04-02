@@ -23,9 +23,7 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    App\Tests\Fixtures\:
-        resource: '../tests/Fixtures'
-        tags: ['doctrine.fixture.orm']
+
 
     # Register custom EventExporters
 #    App\Service\EventExporter\JsonExporter:

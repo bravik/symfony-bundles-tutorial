@@ -11,9 +11,19 @@
         }
     ],
     "require": {
-        "php": "^7.3"
+        "php": "^7.3",
+        "doctrine/doctrine-bundle": "^2.0",
+        "doctrine/orm": "^2.7",
+        "symfony/framework-bundle": "^5.0",
+        "symfony/twig-bundle": "^5.0",
+        "symfony/webpack-encore-bundle": "^1.7",
+        "symfony/yaml": "^5.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "liip/test-fixtures-bundle": "^1.7",
+        "symfony/browser-kit": "^5.0",
+        "symfony/phpunit-bridge": "^5.0"
     },
     "config": {
         "sort-packages": true

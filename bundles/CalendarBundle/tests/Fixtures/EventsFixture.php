@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\Fixtures;
+namespace bravik\CalendarBundle\Tests\Fixtures;
 
-use App\Entity\Event;
+use bravik\CalendarBundle\Entity\Event;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 

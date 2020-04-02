@@ -1,0 +1,28 @@
+# Обязательный параметр для тестирования
+# @see https://symfony.com/doc/current/reference/configuration/framework.html#test
+framework:
+  test:   true
+
+doctrine:
+  # Подключаем SQLITE БД для тестов в var/test.db
+  dbal:
+    driver: pdo_sqlite
+    path: "%kernel.cache_dir%/test.db"
+  # Подключаем ORM-мэппинг сущностей
+  orm:
+    auto_generate_proxy_classes: true
+    naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+    auto_mapping: true
+
+calendar:
+  enable_soft_delete: true
+
+services:
+  # Расширение Twig, предоставляющее mock-функции вместо webpack encore
+  bravik\CalendarBundle\Tests\App\TwigWebpackSuppressor:
+    tags: ['twig.extension']
+
+  # Фикстуры для тестов должны быть помечены тегом
+  bravik\CalendarBundle\Tests\Fixtures\:
+    resource: '../../Fixtures'
+    tags: ['doctrine.fixture.orm']

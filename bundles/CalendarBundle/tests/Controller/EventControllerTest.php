@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace bravik\CalendarBundle\Controller;
 
-use App\Tests\Fixtures\EventsFixture;
+use bravik\CalendarBundle\Tests\Fixtures\EventsFixture;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
