@@ -17,6 +17,10 @@ services:
     # Фильтр Twig для форматирования даты
     bravik\CalendarBundle\Twig\TwigRuDateFilter: ~
 
+    bravik\CalendarBundle\Command\InstallCommand:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
     # Регистрируем все классы компонента EventExporter как DI-сервисы
     bravik\CalendarBundle\Service\EventExporter\:
         resource: '../src/Service/EventExporter/*'

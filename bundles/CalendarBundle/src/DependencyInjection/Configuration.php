@@ -16,7 +16,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->getRootNode()
             ->children()
                 ->booleanNode('enable_soft_delete')
-                    ->isRequired()
+                    ->defaultFalse()
                     ->info('Enables soft delete mode for articles. Articles would be marked as `archived` instead of deletion')
                     ->validate()
                         ->ifTrue(function ($v) { return $v <= 0; })
